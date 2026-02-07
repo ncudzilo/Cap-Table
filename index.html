@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reneu Wellness Club - Cap Table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: linear-gradient(135deg, #d0d8dc 0%, #dfe6e9 50%, #cfd7db 100%);
+      color: #4f452d;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .header-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 20px rgba(79, 69, 45, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+    }
+    
+    .main-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 20px rgba(79, 69, 45, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      overflow: hidden;
+    }
+    
+    .metric-card {
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(79, 69, 45, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      transition: all 0.2s ease;
+    }
+    
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(79, 69, 45, 0.1);
+    }
+    
+    .section-card {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1.5px solid rgba(79, 69, 45, 0.08);
+    }
+    
+    h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #4f452d;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    
+    h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #4f452d;
+      margin-bottom: 28px;
+    }
+    
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #4f452d;
+      margin-bottom: 20px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      color: #7a6f5d;
+      font-weight: 400;
+    }
+    
+    .label {
+      font-size: 13px;
+      color: #7a6f5d;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    
+    .description {
+      font-size: 14px;
+      color: #8a7f6d;
+      line-height: 1.5;
+    }
+    
+    .value-huge {
+      font-size: 56px;
+      font-weight: 900;
+      color: #4f452d;
+      line-height: 1;
+    }
+    
+    .value-large {
+      font-size: 36px;
+      font-weight: 800;
+      color: #4f452d;
+      line-height: 1.1;
+    }
+    
+    .value-medium {
+      font-size: 28px;
+      font-weight: 700;
+      color: #4f452d;
+    }
+    
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid rgba(79, 69, 45, 0.08);
+      padding: 0 32px;
+      gap: 8px;
+    }
+    
+    .tab {
+      padding: 20px 28px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #8a7f6d;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      position: relative;
+      top: 2px;
+    }
+    
+    .tab:hover {
+      color: #4f452d;
+      background: rgba(79, 69, 45, 0.03);
+    }
+    
+    .tab.active {
+      color: #4f452d;
+      border-bottom-color: #4f452d;
+      background: rgba(79, 69, 45, 0.02);
+    }
+    
+    .tab-content {
+      padding: 40px;
+    }
+    
+    .progress-bar-container {
+      margin-bottom: 32px;
+    }
+    
+    .progress-bar {
+      height: 64px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(201, 215, 216, 0.25);
+      display: flex;
+      box-shadow: inset 0 2px 8px rgba(79, 69, 45, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+    
+    .progress-segment {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #4f452d;
+      transition: all 0.3s ease;
+    }
+    
+    .ownership-item {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 6px rgba(79, 69, 45, 0.05);
+      transition: all 0.2s ease;
+    }
+    
+    .ownership-item:hover {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 10px rgba(79, 69, 45, 0.08);
+    }
+    
+    .ownership-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 6px;
+      margin-right: 14px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+    
+    .input-group {
+      margin-bottom: 28px;
+    }
+    
+    .slider-container {
+      margin: 16px 0;
+    }
+    
+    .slider-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .slider-track {
+      flex: 1;
+      position: relative;
+    }
+    
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 10px;
+      border-radius: 8px;
+      background: rgba(79, 69, 45, 0.12);
+      outline: none;
+      position: relative;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #4f452d;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(79, 69, 45, 0.25);
+      transition: all 0.2s ease;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 14px rgba(79, 69, 45, 0.35);
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #4f452d;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(79, 69, 45, 0.25);
+      transition: all 0.2s ease;
+    }
+    
+    input[type="range"]::-moz-range-thumb:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 14px rgba(79, 69, 45, 0.35);
+    }
+    
+    .slider-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #4f452d;
+      min-width: 70px;
+      text-align: right;
+    }
+    
+    input[type="number"] {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(79, 69, 45, 0.15);
+      border-radius: 12px;
+      padding: 14px 18px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #4f452d;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      transition: all 0.2s ease;
+    }
+    
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #4f452d;
+      box-shadow: 0 0 0 3px rgba(79, 69, 45, 0.08);
+    }
+    
+    .calc-box {
+      background: rgba(79, 69, 45, 0.04);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-top: 24px;
+      border: 1px solid rgba(79, 69, 45, 0.08);
+    }
+    
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+    
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+    
+    .info-banner {
+      background: rgba(79, 69, 45, 0.04);
+      border-left: 4px solid rgba(79, 69, 45, 0.3);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 32px;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      background: rgba(79, 69, 45, 0.08);
+      color: #4f452d;
+      letter-spacing: 0.5px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 24px; }
+      .value-huge { font-size: 42px; }
+      .value-large { font-size: 28px; }
+      .value-medium { font-size: 22px; }
+      .tab-content { padding: 24px; }
+      .tabs { padding: 0 16px; }
+      .tab { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+        <div>
+          <h1>Reneu Wellness Club</h1>
+          <p class="subtitle">Capitalization Table & Financial Modeling</p>
+        </div>
+        <div style="text-align: right;">
+          <span class="badge">SDVOSB</span>
+          <p class="description" style="margin-top: 8px; font-size: 12px;">Service-Disabled Veteran-Owned</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-card">
+      <div class="tabs">
+        <button class="tab active" onclick="app.setTab('current')">Current Structure</button>
+        <button class="tab" onclick="app.setTab('parameters')">Model Funding</button>
+        <button class="tab" onclick="app.setTab('scenarios')">Scenarios</button>
+        <button class="tab" onclick="app.setTab('exits')">Exit Analysis</button>
+      </div>
+      <div class="tab-content" id="content"></div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom: 24px;">
+      <div class="metric-card">
+        <p class="label">Current MRR</p>
+        <p class="value-medium">$2,861</p>
+        <p class="description" style="color: #6aa84f; margin-top: 6px; font-weight: 600;">+37% Monthly Growth</p>
+      </div>
+      <div class="metric-card">
+        <p class="label">Active Patients</p>
+        <p class="value-medium">70</p>
+        <p class="description" style="margin-top: 6px;">As of Feb 5, 2025</p>
+      </div>
+      <div class="metric-card">
+        <p class="label">Customer LTV</p>
+        <p class="value-medium">$1,332</p>
+        <p class="description" style="margin-top: 6px;">24-month retention</p>
+      </div>
+      <div class="metric-card">
+        <p class="label">Monthly Growth</p>
+        <p class="value-medium">37%</p>
+        <p class="description" style="margin-top: 6px;">Compounded</p>
+      </div>
+    </div>
+
+    <div class="header-card" style="text-align: center; padding: 28px 40px;">
+      <p class="label" style="text-transform: none; font-size: 12px;">Service-Disabled Veteran-Owned Small Business</p>
+      <h3 style="margin: 12px 0 20px 0; font-size: 20px;">Reneu Wellness Club LLC</h3>
+      <div style="display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;">
+        <div>
+          <p class="description" style="font-weight: 600; color: #4f452d;">Jesse Cudzilo, CEO</p>
+          <a href="mailto:jesse@reneuwellnessclub.com" style="color: #1155cc; text-decoration: none; font-size: 14px;">jesse@reneuwellnessclub.com</a>
+        </div>
+        <div>
+          <p class="description" style="font-weight: 600; color: #4f452d;">Nicholas Cudzilo, Founder & CTO</p>
+          <a href="mailto:nick@reneuwellnessclub.com" style="color: #1155cc; text-decoration: none; font-size: 14px;">nick@reneuwellnessclub.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const app = {
+      state: {
+        preSeedPercent: 2,
+        preSeedAmount: 200000,
+        seedPercent: 3,
+        seedAmount: 500000,
+        activeTab: 'current'
+      },
+      
+      formatCurrency: (value) => {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          minimumFractionDigits: 0
+        }).format(value);
+      },
+      
+      formatPercent: (value) => `${value.toFixed(2)}%`,
+      
+      calculate: () => {
+        const s = app.state;
+        const current = { nick: 75, earlyMembers: 25 };
+        
+        const preSeedDilution = s.preSeedPercent;
+        const postPreSeed = {
+          nick: current.nick * (1 - preSeedDilution / 100),
+          earlyMembers: current.earlyMembers * (1 - preSeedDilution / 100),
+          preSeedInvestors: preSeedDilution
+        };
+        
+        const seedDilution = s.seedPercent;
+        const postSeed = {
+          nick: postPreSeed.nick * (1 - seedDilution / 100),
+          earlyMembers: postPreSeed.earlyMembers * (1 - seedDilution / 100),
+          preSeedInvestors: postPreSeed.preSeedInvestors * (1 - seedDilution / 100),
+          seedInvestors: seedDilution
+        };
+        
+        const exitScenarios = [60000000, 80000000, 100000000].map((value, i) => ({
+          name: ['Conservative', 'Base Case', 'Optimistic'][i],
+          value,
+          nickValue: (value * postSeed.nick / 100).toFixed(0),
+          earlyMembersValue: (value * postSeed.earlyMembers / 100).toFixed(0),
+          preSeedROI: ((value * postSeed.preSeedInvestors / 100) / s.preSeedAmount).toFixed(1),
+          seedROI: ((value * postSeed.seedInvestors / 100) / s.seedAmount).toFixed(1)
+        }));
+        
+        return { current, postPreSeed, postSeed, exitScenarios };
+      },
+      
+      renderOwnership: (data) => {
+        const colors = {
+          nick: '#c6d4d5',
+          earlyMembers: '#e3eaea',
+          preSeedInvestors: '#c9daf8',
+          seedInvestors: '#b6d7a8'
+        };
+        
+        const labels = {
+          nick: 'Nicholas Cudzilo',
+          earlyMembers: 'Early Members',
+          preSeedInvestors: 'Pre-Seed Investors',
+          seedInvestors: 'Seed Investors'
+        };
+        
+        let html = '<div class="progress-bar-container"><div class="progress-bar">';
+        for (const [key, value] of Object.entries(data)) {
+          html += `<div class="progress-segment" style="width: ${value}%; background: ${colors[key]}">${app.formatPercent(value)}</div>`;
+        }
+        html += '</div></div>';
+        
+        for (const [key, value] of Object.entries(data)) {
+          html += `
+            <div class="ownership-item">
+              <div style="display: flex; align-items: center;">
+                <div class="ownership-dot" style="background: ${colors[key]}"></div>
+                <span style="font-weight: 600; font-size: 15px; color: #4f452d;">${labels[key]}</span>
+              </div>
+              <span class="value-medium" style="font-size: 26px;">${app.formatPercent(value)}</span>
+            </div>
+          `;
+        }
+        
+        return html;
+      },
+      
+      render: () => {
+        const calc = app.calculate();
+        const s = app.state;
+        const content = document.getElementById('content');
+        
+        document.querySelectorAll('.tab').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        
+        if (s.activeTab === 'current') {
+          document.querySelectorAll('.tab')[0].classList.add('active');
+          content.innerHTML = `
+            <h2>Current Ownership Structure</h2>
+            <div class="grid-2">
+              <div>${app.renderOwnership(calc.current)}</div>
+              <div>
+                <div class="section-card" style="margin-bottom: 18px; background: rgba(198, 212, 213, 0.25); border-color: rgba(198, 212, 213, 0.4);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <p style="font-weight: 700; color: #4f452d; font-size: 19px; margin-bottom: 6px;">Nicholas Cudzilo</p>
+                      <p class="description">Founder & CTO</p>
+                      <p class="description" style="margin-top: 4px; color: #8a7f6d;">7,500,000 shares</p>
+                    </div>
+                    <p class="value-large" style="font-size: 48px;">75%</p>
+                  </div>
+                </div>
+                <div class="section-card" style="margin-bottom: 18px; background: rgba(227, 234, 234, 0.35); border-color: rgba(227, 234, 234, 0.5);">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <p style="font-weight: 700; color: #4f452d; font-size: 19px; margin-bottom: 6px;">Early Members</p>
+                      <p class="description">Initial Stakeholders</p>
+                      <p class="description" style="margin-top: 4px; color: #8a7f6d;">2,500,000 shares</p>
+                    </div>
+                    <p class="value-large" style="font-size: 48px;">25%</p>
+                  </div>
+                </div>
+                <div class="section-card" style="border: 2px solid rgba(79, 69, 45, 0.2); background: rgba(255, 255, 255, 0.5);">
+                  <p class="label" style="margin-bottom: 8px;">Total Outstanding</p>
+                  <p class="value-huge" style="font-size: 48px; margin-bottom: 6px;">10,000,000</p>
+                  <p class="description">Common Stock</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-banner">
+              <p class="description"><strong>Pre-Funding Status:</strong> This represents the current capitalization before any external investment. Use the "Model Funding" tab to simulate different investment scenarios.</p>
+            </div>
+          `;
+        } else if (s.activeTab === 'parameters') {
+          document.querySelectorAll('.tab')[1].classList.add('active');
+          content.innerHTML = `
+            <h2>Model Funding Rounds</h2>
+            <p class="description" style="margin-bottom: 32px;">Adjust the parameters below to model different investment scenarios. Changes update all calculations in real-time.</p>
+            
+            <div class="grid-2">
+              <div class="section-card">
+                <h3>Pre-Seed Round (This Round)</h3>
+                
+                <div class="input-group">
+                  <p class="label">Investor Ownership Percentage</p>
+                  <div class="slider-container">
+                    <div class="slider-wrapper">
+                      <div class="slider-track">
+                        <input type="range" min="0" max="20" step="0.5" value="${s.preSeedPercent}" oninput="app.update('preSeedPercent', this.value)">
+                      </div>
+                      <span class="slider-value">${s.preSeedPercent}%</span>
+                    </div>
+                  </div>
+                  <p class="description">Pre-seed investors will receive ${s.preSeedPercent}% equity</p>
+                </div>
+                
+                <div class="input-group">
+                  <p class="label">Total Investment Amount</p>
+                  <input type="number" value="${s.preSeedAmount}" onchange="app.update('preSeedAmount', this.value)" step="10000">
+                  <p class="description" style="margin-top: 8px;">${app.formatCurrency(s.preSeedAmount)} capital raised</p>
+                </div>
+                
+                <div class="calc-box">
+                  <p class="label" style="margin-bottom: 6px;">Implied Pre-Money Valuation</p>
+                  <p class="value-large">${app.formatCurrency(s.preSeedAmount / (s.preSeedPercent / 100))}</p>
+                </div>
+              </div>
+              
+              <div class="section-card">
+                <h3>Seed Round (Next Round)</h3>
+                
+                <div class="input-group">
+                  <p class="label">Investor Ownership Percentage</p>
+                  <div class="slider-container">
+                    <div class="slider-wrapper">
+                      <div class="slider-track">
+                        <input type="range" min="0" max="30" step="0.5" value="${s.seedPercent}" oninput="app.update('seedPercent', this.value)">
+                      </div>
+                      <span class="slider-value">${s.seedPercent}%</span>
+                    </div>
+                  </div>
+                  <p class="description">Seed investors will receive ${s.seedPercent}% equity (post-dilution)</p>
+                </div>
+                
+                <div class="input-group">
+                  <p class="label">Total Investment Amount</p>
+                  <input type="number" value="${s.seedAmount}" onchange="app.update('seedAmount', this.value)" step="10000">
+                  <p class="description" style="margin-top: 8px;">${app.formatCurrency(s.seedAmount)} capital raised</p>
+                </div>
+                
+                <div class="calc-box">
+                  <p class="label" style="margin-bottom: 6px;">Implied Pre-Money Valuation</p>
+                  <p class="value-large">${app.formatCurrency(s.seedAmount / (s.seedPercent / 100))}</p>
+                </div>
+              </div>
+            </div>
+          `;
+        } else if (s.activeTab === 'scenarios') {
+          document.querySelectorAll('.tab')[2].classList.add('active');
+          content.innerHTML = `
+            <h2>Funding Scenarios</h2>
+            <p class="description" style="margin-bottom: 32px;">Projected ownership after each funding round, showing dilution effects.</p>
+            
+            <h3 style="font-size: 20px; margin-bottom: 20px;">After Pre-Seed Round</h3>
+            <p class="description" style="margin-bottom: 16px;"><strong>${s.preSeedPercent}% dilution</strong> · Pre-seed investors receive ${s.preSeedPercent}% equity for ${app.formatCurrency(s.preSeedAmount)}</p>
+            ${app.renderOwnership(calc.postPreSeed)}
+            
+            <div style="margin: 48px 0; border-top: 2px solid rgba(79, 69, 45, 0.08);"></div>
+            
+            <h3 style="font-size: 20px; margin-bottom: 20px;">After Seed Round</h3>
+            <p class="description" style="margin-bottom: 16px;"><strong>Additional ${s.seedPercent}% dilution</strong> · Seed investors receive ${s.seedPercent}% equity for ${app.formatCurrency(s.seedAmount)}</p>
+            ${app.renderOwnership(calc.postSeed)}
+          `;
+        } else if (s.activeTab === 'exits') {
+          document.querySelectorAll('.tab')[3].classList.add('active');
+          content.innerHTML = `
+            <h2>Exit Scenario Analysis</h2>
+            <p class="description" style="margin-bottom: 32px;">Projected returns for all stakeholders across three exit valuations. Based on post-seed ownership structure.</p>
+            
+            <div class="grid-3">
+              ${calc.exitScenarios.map((sc, i) => `
+                <div class="section-card" style="background: ${['rgba(198, 212, 213, 0.25)', 'rgba(244, 204, 204, 0.25)', 'rgba(182, 215, 168, 0.25)'][i]}; border-color: ${['rgba(198, 212, 213, 0.4)', 'rgba(244, 204, 204, 0.4)', 'rgba(182, 215, 168, 0.4)'][i]};">
+                  <h3 style="margin-bottom: 24px; font-size: 20px;">${sc.name} Exit</h3>
+                  
+                  <div style="margin-bottom: 24px;">
+                    <p class="label">Exit Valuation</p>
+                    <p class="value-large" style="margin-bottom: 2px;">${app.formatCurrency(sc.value)}</p>
+                  </div>
+                  
+                  <div style="border-top: 1px solid rgba(79, 69, 45, 0.1); padding-top: 20px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                      <p class="label" style="margin: 0;">Pre-Seed ROI</p>
+                      <p style="font-size: 26px; font-weight: 700; color: #4f452d;">${sc.preSeedROI}×</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                      <p class="label" style="margin: 0;">Seed ROI</p>
+                      <p style="font-size: 26px; font-weight: 700; color: #4f452d;">${sc.seedROI}×</p>
+                    </div>
+                  </div>
+                  
+                  <div style="border-top: 1px solid rgba(79, 69, 45, 0.1); padding-top: 20px;">
+                    <div style="margin-bottom: 14px;">
+                      <p class="description" style="margin-bottom: 4px;">Nicholas Cudzilo</p>
+                      <p style="font-size: 22px; font-weight: 700; color: #4f452d;">${app.formatCurrency(sc.nickValue)}</p>
+                    </div>
+                    <div>
+                      <p class="description" style="margin-bottom: 4px;">Early Members</p>
+                      <p style="font-size: 22px; font-weight: 700; color: #4f452d;">${app.formatCurrency(sc.earlyMembersValue)}</p>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            
+            <div class="info-banner">
+              <p style="font-weight: 700; color: #4f452d; margin-bottom: 8px; font-size: 15px;">Exit Timeline: 4-5 Years</p>
+              <p class="description">Conservative scenario models strategic acquisition by established telehealth platform. Base case reflects competitive bidding environment. Optimistic scenario assumes premium valuation driven by multiple strategic acquirers and strong market position.</p>
+            </div>
+          `;
+        }
+      },
+      
+      setTab: (tab) => {
+        app.state.activeTab = tab;
+        app.render();
+      },
+      
+      update: (key, value) => {
+        app.state[key] = Number(value);
+        app.render();
+      }
+    };
+    
+    app.render();
+  </script>
+</body>
+</html>
